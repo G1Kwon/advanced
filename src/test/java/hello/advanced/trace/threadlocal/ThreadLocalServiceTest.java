@@ -1,22 +1,22 @@
 package hello.advanced.trace.threadlocal;
 
-import hello.advanced.trace.threadlocal.code.FieldService;
+import hello.advanced.trace.threadlocal.code.ThreadLocalService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class FiledServiceTest {
+public class ThreadLocalServiceTest {
 
-    private FieldService fieldService = new FieldService();
+    private ThreadLocalService Service = new ThreadLocalService();
 
     @Test
     void field() {
         log.info("main start");
         Runnable userA = () -> {
-            fieldService.logic("userA");
+            Service.logic("userA");
         };
         Runnable userB = () -> {
-            fieldService.logic("userB");
+            Service.logic("userB");
         };
         Thread threadA = new Thread(userA);
         threadA.setName("thread-A");
